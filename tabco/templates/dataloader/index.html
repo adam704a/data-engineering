@@ -1,7 +1,57 @@
-<h1>Please load in your file</h1>
+
+<style type="text/css">
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:16px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+</style>
 
 <form method="post" enctype="multipart/form-data">
 	{% csrf_token %}
     <input type="file" name="myfile" />
     <input type="submit" name="submit" value="Upload" />
 </form>
+
+<table class="gridtable">
+	<tr>
+		<th>Purchaser Name</th>
+		<th>Item Description</th>
+		<th>Item Price</th>
+		<th>Purchase Count</th>
+		<th>Merchant Address</th>
+		<th>Merchant Name</th>
+	</tr>
+{% for order in order_list.all %}
+
+	<tr>
+		<td>{{ order.purchaser.name }}</td>
+		<td>{{ order.item.description }}</td>
+		<td>{{ order.item.price }}</td>
+		<td>{{ order.quantity }}</td>
+		<td>{{ order.merchant.address }}</td>
+		<td>{{ order.merchant.name }}</td>
+	</tr>
+
+
+{% endfor %}
+</table>
+
+Total: {{ gross_revenue }}

@@ -1,4 +1,5 @@
 from django.db import models
+		
 
 # My Models
 class Item(models.Model):
@@ -21,6 +22,9 @@ class Purchaser(models.Model):
 class Order(models.Model):
 	item = models.ForeignKey(Item)
 	merchant = models.ForeignKey(Merchant)
-	purchanser = models.ForeignKey(Purchaser)
-	quantity = models.IntegerField();
+	purchaser = models.ForeignKey(Purchaser)
+	quantity = models.IntegerField()
 	
+	
+
+

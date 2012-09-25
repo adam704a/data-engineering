@@ -6,14 +6,15 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'tabco.views.home', name='home'),
+    url(r'^$', 'tabco.views.home', name='home'),
     # url(r'^tabco/', include('tabco.foo.urls')),
+	url(r'^dataloader/$', 'dataloader.views.index'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-	url(r'^dataloader/$', 'dataloader.views.index'),
+	
 )
 
