@@ -14,10 +14,11 @@ logging.basicConfig()
 def index(request):
 	
 	if request.method == 'POST':
-		save_order(request.FILES['myfile'])
-
-	
-	order_list = Order.objects.all()
+		num_saved = save_order(request.FILES['myfile'])
+		order_list = Order.objects.all()[:num_saved]
+	else:
+		order_list = Order.objects.all()
+		
 	t = loader.get_template('dataloader/index.html')
 	c = Context({
 	        'order_list': order_list,
@@ -50,5 +51,6 @@ def save_order(f):
 				
 				_order = Order(item=_item, merchant=_merchant, purchaser=_purchaser, quantity=entry[3] )
 				_order.save()
+				return len(lines)
 	
 	

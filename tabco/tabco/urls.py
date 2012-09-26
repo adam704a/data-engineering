@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'tabco.views.home', name='home'),
+    url(r'^$', 'dataloader.views.index'),
     # url(r'^tabco/', include('tabco.foo.urls')),
 	url(r'^dataloader/$', 'dataloader.views.index'),
 
